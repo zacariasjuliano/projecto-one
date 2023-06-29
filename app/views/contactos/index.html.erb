@@ -1,0 +1,36 @@
+<section class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center" style="display: inline-block; float: none;">
+            <h1 class="fw-light">CONTACTO</h1>
+            <p class="lead text-muted">Listagem dos contactos cadastrados.</p>
+        </div>
+
+        <div>
+            <p>
+                <a href="/contactos/novo" class="btn btn-primary my-2">Cadastrar</a>
+            </p>    
+
+            <table class="table">
+                <thead>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Observação</th>
+                    <th class="colpsan=2">Acções</th>
+                </thead>
+                <tbody>
+                    <% @lista.each do |contato| %>
+                        <tr>
+                            <td><%= contato["nome"] -%></td>
+                            <td><%= contato["email"] -%></td>
+                            <td><%= contato["observacao"] -%></td>
+                            <td> <a href="#" class="btn btn-primary my-2">Editar</a> </td>
+                            <td> <a href="#" class="btn btn-primary my-2">Apagar</a> </td>
+                        </tr>
+                    <% end %>  
+                </tbody> 
+            </table>        
+
+        </div>
+    </div>
+
+</section>
