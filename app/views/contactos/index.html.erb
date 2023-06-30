@@ -12,19 +12,27 @@
 
             <table class="table">
                 <thead>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Observação</th>
-                    <th class="colpsan=2">Acções</th>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Observação</th>
+                        <th>Criado em</th>
+                        <th>Actualizado em</th>
+                        <th colspan="2" class="text-center">Acções</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <% @lista.each do |contato| %>
                         <tr>
-                            <td><%= contato["nome"] -%></td>
-                            <td><%= contato["email"] -%></td>
-                            <td><%= contato["observacao"] -%></td>
-                            <td> <a href="#" class="btn btn-primary my-2">Editar</a> </td>
-                            <td> <a href="#" class="btn btn-primary my-2">Apagar</a> </td>
+                            <td><%= contato["nome"] %></td>
+                            <td><%= contato["email"] %></td>
+                            <td><%= contato["observacao"] %></td>
+                            <td><%= contato["created_at"].strftime("%d/%m/%Y %H:%M:%S") %></td>
+                            <td><%= contato["update_at"] %></td>
+                            <td> 
+                                <a href="/contacto/<%= contato.id %>/editar" class="btn btn-warning my-2">Editar</a>
+                                <a href="#" onclick="excluir('/contacto/<%= contato.id %>/apagar')" class="btn btn-danger my-2">Apagar</a> 
+                             </td>
                         </tr>
                     <% end %>  
                 </tbody> 

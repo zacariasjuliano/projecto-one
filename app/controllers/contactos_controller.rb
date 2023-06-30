@@ -26,6 +26,30 @@ class ContactosController < ApplicationController
         redirect_to "/contactos"
     end
 
-    def delete
+    def edit
+        @contacto = Contacto.find(params["id"])
+        return render "edit"
     end
+
+    def update
+        @contacto = Contacto.find(params["id"])
+        @contacto.nome = params["nome"]
+        @contacto.email = params["email"]
+        @contacto.observacao = params["observacao"]
+
+        @contacto.save
+
+        flash["success"] = "O contato foi editado com sucesso."
+        render json: @contato.to_json, status: 200
+
+    end
+
+    def delete
+        contacto = Contacto.find(params["id"])
+        contacto.destroy
+
+        flash["success"] = "O contato foi excluido com sucesso."
+        render json: {}, status: 204 
+    end
+
 end
