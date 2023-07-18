@@ -52,4 +52,9 @@ class ContactosController < ApplicationController
         render json: {}, status: 204 
     end
 
+    def show
+        @contacto = Contacto.find(params["id"])
+        return render "show"
+    end
+
 end

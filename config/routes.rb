@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get '/contactos/novo', to: 'contactos#create'
   post '/contactos/cadastrar', to: 'contactos#store'
+  get '/contacto/:id/mostrar', to: 'contactos#show'
   get '/contacto/:id/editar', to: 'contactos#edit'
   put '/contacto/:id/actualizar', to: 'contactos#update'
   delete '/contacto/:id/apagar', to: 'contactos#delete'
