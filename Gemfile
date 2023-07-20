@@ -5,6 +5,8 @@ ruby '2.7.2'
 
 gem 'bootstrap-generators'
 
+gem 'record_tag_helper', '~> 1.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record

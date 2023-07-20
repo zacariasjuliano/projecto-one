@@ -7,30 +7,7 @@
 
         <div> 
             
-            <form action="/contacto/<%= @contacto.id %>/actualizar" method="post" onsubmit="atualizar(event)">
-                
-                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-                <div class="form-group">
-                    <label for="nome">Nome: <span aria-hidden="true" style="color:red">*</span></label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" value="<%= @contacto.nome %>">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">E-mail: <span aria-hidden="true" style="color:red">*</span></label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail" value="<%= @contacto.email %>">
-                </div>
-
-                <div class="form-group">
-                    <label for="observacao">Observação:</label>
-                    <textarea class="form-control" id="observacao" name="observacao" placeholder="Digite sua observação" rows="4">
-                        <%= @contacto.observacao %>
-                    </textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Actualizar</button>
-
-            </form>
+            <%= render "form", url:"/contacto/#{@contacto.id}/actualizar", action:"atualizar(event)", contacto:@contacto %>            
 
         </div>
     </div>

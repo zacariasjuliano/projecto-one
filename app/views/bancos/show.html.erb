@@ -1,0 +1,32 @@
+<div class="page-header">
+  <%= link_to bancos_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_banco_path(@banco), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show banco</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @banco.nome %></dd>
+
+  <dt>Sigla:</dt>
+  <dd><%= @banco.sigla %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @banco.email %></dd>
+
+  <dt>Ni:</dt>
+  <dd><%= @banco.ni %></dd>
+
+  <dt>Capital:</dt>
+  <dd><%= @banco.capital %></dd>
+
+  <dt>Pais:</dt>
+  <dd><%= @banco.pais %></dd>
+
+</dl>
