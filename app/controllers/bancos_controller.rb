@@ -71,7 +71,13 @@ class BancosController < ApplicationController
 
     def banco_hook
       puts "---------------------------------"
-      puts params.inspect
+      puts("ID: #{@banco[:id]}")
+      puts("NOME: #{@banco[:nome]}")
+      puts("SIGLA: #{@banco[:sigla]}")
+      puts("EMAIL: #{@banco[:email]}")
+      puts("NI: #{@banco[:ni]}")
+      puts("CAPITAL #{@banco[:capital]}")
+      puts("PAIS: #{@banco[:pais]}")
       puts "---------------------------------"
     end
 end
