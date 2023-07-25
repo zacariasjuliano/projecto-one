@@ -1,5 +1,6 @@
 class BancosController < ApplicationController
   before_action :set_banco, only: %i[ show edit update destroy ]
+  before_action :banco_hook, only: %i[ create, show]
 
   # GET /bancos or /bancos.json
   def index
@@ -66,5 +67,11 @@ class BancosController < ApplicationController
     # Only allow a list of trusted parameters through.
     def banco_params
       params.require(:banco).permit(:nome, :sigla, :email, :ni, :capital, :pais)
+    end
+
+    def banco_hook
+      puts "---------------------------------"
+      puts params.inspect
+      puts "---------------------------------"
     end
 end
