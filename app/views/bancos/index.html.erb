@@ -6,6 +6,64 @@
   <h1>Listing bancos</h1>
 </div>
 
+<div>
+
+  <form class="form-horizontal" action="/bancos" accept-charset="UTF-8" method="get">
+
+    <div class="form-group">
+      <label class="col-sm-1 control-label" for="banco_nome">Nome</label>
+      <div class="col-sm-11">
+        <input class="form-control" type="text" name="banco[nome]" id="banco_nome">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-1 control-label" for="banco_sigla">Sigla</label>
+      <div class="col-sm-11">
+        <input class="form-control" type="text" name="banco[sigla]" id="banco_sigla">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-1 control-label" for="banco_email">Email</label>
+      <div class="col-sm-11">
+        <input class="form-control" type="text" name="banco[email]" id="banco_email">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-1 control-label" for="banco_ni">NI</label>
+      <div class="col-sm-11">
+        <input class="form-control" type="text" name="banco[ni]" id="banco_ni">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-1 control-label" for="banco_capital">Capital</label>
+      <div class="col-sm-11">
+        <input class="form-control" type="text" name="banco[capital]" id="banco_capital">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-1 control-label" for="banco_pais">Pais</label>
+      <div class="col-sm-11">
+        <input class="form-control" type="text" name="banco[pais]" id="banco_pais">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-12" style="text-align:right">
+        <input type="submit" value="Buscar" class="btn btn-primary" data-disable-with="Create Aluno">
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+
+
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
     <thead>
