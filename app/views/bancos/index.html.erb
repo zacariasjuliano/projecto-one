@@ -1,14 +1,14 @@
-<div class="page-header">
-  <%= link_to new_banco_path, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New Banco
-  <% end %>
-  <h1>Listing bancos</h1>
-</div>
+
 
 <div>
 
   <form class="form-horizontal" action="/bancos" accept-charset="UTF-8" method="get">
+
+    <div class="form-group">
+      <div class="col-sm-12" style="text-align:right">
+        <input type="submit" value="Buscar" class="btn btn-primary" data-disable-with="Create Aluno">
+      </div>
+    </div>
 
     <div class="form-group">
       <label class="col-sm-1 control-label" for="banco_nome">Nome</label>
@@ -52,45 +52,45 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <div class="col-sm-12" style="text-align:right">
-        <input type="submit" value="Buscar" class="btn btn-primary" data-disable-with="Create Aluno">
-      </div>
-    </div>
-
   </form>
 
 </div>
 
-
+<div class="page-header">
+  <%= link_to new_banco_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Novo Banco
+  <% end %>
+  <h1>Listagem de bancos</h1>
+</div>
 
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-            <th>Nome</th>
-            <th>Sigla</th>
-            <th>Email</th>
-            <th>Ni</th>
-            <th>Capital</th>
-            <th>Pais</th>
-            <th></th>
-        <th></th>
-        <th></th>
+        <th>Nome</th>
+        <th>Sigla</th>
+        <th>Email</th>
+        <th>Ni</th>
+        <th>Capital</th>
+        <th>Pais</th>
+        <th colspan="3" class="text-center">Acções</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @bancos) do |banco| %>
-            <td><%= banco.nome %></td>
-            <td><%= banco.sigla %></td>
-            <td><%= banco.email %></td>
-            <td><%= banco.ni %></td>
-            <td><%= banco.capital %></td>
-            <td><%= banco.pais %></td>
-            <td><%= link_to 'Show', banco %></td>
-        <td><%= link_to 'Edit', edit_banco_path(banco) %></td>
-        <td><%= link_to 'Destroy', banco, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= banco.nome %></td>
+        <td><%= banco.sigla %></td>
+        <td><%= banco.email %></td>
+        <td><%= banco.ni %></td>
+        <td><%= banco.capital %></td>
+        <td><%= banco.pais %></td>
+        <td>
+          <a href="/bancos/<%= banco.id %>" class="btn btn-primary my-2">Ver</a>
+          <a href="/bancos/<%= banco.id %>/edit" class="btn btn-warning my-2">Editar</a> 
+          <%= link_to 'Destroy', banco, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       <% end %>
     </tbody>
   </table>

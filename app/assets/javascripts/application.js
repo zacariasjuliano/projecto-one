@@ -79,3 +79,30 @@ const atualizar = async (event) => {
         alert('Ocorreu um erro na requisição.' + error.message);
     }
 };
+
+
+const excluir_banco = async (url) => {
+
+    if (confirm("Confirma ?")){
+        
+        try {
+
+            const token = document.querySelector("meta[name='csrf-token']").content;
+            const urlWithToken = `${url}?authenticity_token=${encodeURIComponent(token)}`;
+            const response = await fetch(urlWithToken, { method: 'DELETE' });
+
+            if (response.ok) {
+                window.location.reload()
+            } else {
+                alert('Erro ao excluir o banco.');
+            }
+
+        } catch (error) {
+
+            alert('Ocorreu um erro na requisição.' + error.message);
+
+        }
+
+    }
+
+}
