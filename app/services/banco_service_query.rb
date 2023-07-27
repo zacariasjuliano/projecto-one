@@ -11,6 +11,14 @@ class BancoServiceQuery
         bancos = bancos.where("capital >= ?", params[:capital_ini]) if params[:capital_ini].present?
         bancos = bancos.where("capital <= ?", params[:capital_fim]) if params[:capital_ini].present?
 
+        if params[:ids].present?
+
+            array_ids = params[:ids].split(",").map{|s| s.to_i}.find_all{|n| n > 0} rescue []
+
+            bancos = bancos.where(id: array_ids)
+
+        end
+
         bancos
     end
 end
