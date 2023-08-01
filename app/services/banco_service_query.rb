@@ -9,7 +9,7 @@ class BancoServiceQuery
         bancos = bancos.by_pais(params[:pais]) if params[:pais].present?
         
         bancos = bancos.where("capital >= ?", params[:capital_ini]) if params[:capital_ini].present?
-        bancos = bancos.where("capital <= ?", params[:capital_fim]) if params[:capital_ini].present?
+        bancos = bancos.where("capital <= ?", params[:capital_fim]) if params[:capital_fim].present?
 
         if params[:ids].present?
 

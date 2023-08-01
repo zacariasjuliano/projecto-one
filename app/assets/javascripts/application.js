@@ -106,3 +106,42 @@ const excluir_banco = async (url) => {
     }
 
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const campoBusca = document.querySelector(".autocomplete-nome-banco");
+
+    campoBusca.onkeyup = async (e) => {
+
+        const valorDigitado = campoBusca.value;
+        let divBuscaAutoComplete = document.querySelector(".divBuscaAutoComplete");
+
+        if(!divBuscaAutoComplete) {
+            campoBusca.parentNode.innerHTML += "<div class='divBuscaAutoComplete'></div>"
+            //console.log(valorDigitado)
+        }
+
+        divBuscaAutoComplete = document.querySelector(".divBuscaAutoComplete");
+
+        const response = await fetch("/bancos.json");
+
+        if (!response.ok) {
+            //throw new Error('Erro ao carregar os dados dos bancos.');
+            console.log('Erro ao carregar os dados dos bancos.');
+            return;
+        }
+
+        const bancosData = await response.json();
+
+        divBuscaAutoComplete.innerHTML = `
+            <ul>
+                ${
+                    bancosData.map((banco) => { return `<li>${banco.nome}</li>` })
+                }                
+            <ul>
+        `;
+
+    }
+
+});

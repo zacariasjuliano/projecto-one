@@ -20,7 +20,7 @@
     <div class="form-group">
       <label class="col-sm-1 control-label" for="banco_nome">Nome</label>
       <div class="col-sm-11">
-        <input class="form-control" type="text" name="nome" id="banco_nome" value="<%= params[:nome] %>">
+        <input class="form-control autocomplete-nome-banco" type="text" name="nome" id="banco_nome" value="<%= params[:nome] %>">
       </div>
     </div>
 
@@ -55,17 +55,17 @@
     <div class="form-group">    
 
       <div class="form-group col-sm-6">
-        <label class="col-sm-3 control-label" for="banco_capital">Capital inicial</label>
+        <label class="col-sm-3 control-label" for="capital_ini">Capital inicial</label>
         <div class="col-sm-9">
-          <input class="form-control" type="text" name="capital_ini" value="<%= params[:capital] %>">
+          <input class="form-control" type="text" name="capital_ini" id="capital_ini" value="<%= params[:capital] %>">
         </div>
       </div>
       
 
       <div class="form-group col-sm-6">
-        <label class="col-sm-3 control-label" for="banco_capital">Capital final</label>
+        <label class="col-sm-3 control-label" for="capital_fim">Capital final</label>
         <div class="col-sm-9">
-          <input class="form-control" type="text" name="capital_fim" value="<%= params[:capital] %>">
+          <input class="form-control" type="text" name="capital_fim" id="capital_fim" value="<%= params[:capital] %>">
         </div>
       </div>
     </div>
