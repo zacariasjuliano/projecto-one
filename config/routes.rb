@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get '/contacto/:id/editar', to: 'contactos#edit'
   put '/contacto/:id/actualizar', to: 'contactos#update'
   delete '/contacto/:id/apagar', to: 'contactos#delete'
+
+  get 'github', to: 'github#index'
 end

@@ -5,6 +5,8 @@ ruby '2.7.2'
 
 gem 'bootstrap-generators'
 
+gem 'httparty'
+
 gem 'record_tag_helper', '~> 1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
