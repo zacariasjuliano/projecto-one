@@ -129,7 +129,7 @@
         
         <td>
           <ul>
-            <%= banco.deposito_bancos do |deposito| %>
+            <% banco.deposito_bancos.each do |deposito| %>
               <li> 
                 Valor: <%= deposito.valor %> 
               </li>
