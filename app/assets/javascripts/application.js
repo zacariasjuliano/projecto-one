@@ -118,13 +118,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let divBuscaAutoComplete = document.querySelector(".divBuscaAutoComplete");
 
         if(!divBuscaAutoComplete) {
-            campoBusca.parentNode.innerHTML += "<div class='divBuscaAutoComplete'></div>"
+            const divBuscaAutoComplete = document.createElement("div");
+            divBuscaAutoComplete.setAttribute("class", "divBuscaAutoComplete");
+            
+            campoBusca.parentNode.append(divBuscaAutoComplete);
             //console.log(valorDigitado)
         }
 
         divBuscaAutoComplete = document.querySelector(".divBuscaAutoComplete");
 
-        const response = await fetch("/bancos.json");
+        const response = await fetch(`/bancos.json?nome=${valorDigitado}`);
 
         if (!response.ok) {
             //throw new Error('Erro ao carregar os dados dos bancos.');
@@ -137,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         divBuscaAutoComplete.innerHTML = `
             <ul>
                 ${
-                    bancosData.map((banco) => { return `<li>${banco.nome}</li>` })
+                    bancosData.map((banco) => { return `<li><a href='/bancos?nome=${banco.nome}'>${banco.nome}</a></li>` }).join("")
                 }                
             <ul>
         `;

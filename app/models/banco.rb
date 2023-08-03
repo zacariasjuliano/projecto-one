@@ -2,6 +2,8 @@ class Banco < ApplicationRecord
 
     include Bancos::Busca
 
+    has_many :deposito_bancos
+
     def self.busca_por_parametro(params = {})
         bancos = Banco.all
         bancos = bancos.by_nome(params[:nome]) if params[:nome].present?

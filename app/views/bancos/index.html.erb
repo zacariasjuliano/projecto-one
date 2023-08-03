@@ -70,6 +70,24 @@
       </div>
     </div>
 
+    <div class="form-group">    
+
+      <div class="form-group col-sm-6">
+        <label class="col-sm-3 control-label" for="data_ini">Data inicial</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="datetime-local" name="data_ini" id="data_ini" value="<%= params[:data] %>">
+        </div>
+      </div>
+      
+
+      <div class="form-group col-sm-6">
+        <label class="col-sm-3 control-label" for="data_fim">Data final</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="datetime-local" name="data_fim" id="data_fim" value="<%= params[:data] %>">
+        </div>
+      </div>
+    </div>
+
   </form>
 
 </div>
@@ -93,6 +111,8 @@
         <th>Ni</th>
         <th>Capital</th>
         <th>Pais</th>
+        <th hidden>Capital</th>
+        <th>Criação</th>
         <th colspan="3" class="text-center">Acções</th>
       </tr>
     </thead>
@@ -106,6 +126,19 @@
         <td><%= banco.ni %></td>
         <td><%= banco.capital %></td>
         <td><%= banco.pais %></td>
+        
+        <td hidden>
+          <ul>
+            <%= banco.deposito_bancos do |deposito| %>
+              <li> 
+                Deposito: <%= deposito.valor %> 
+              </li>
+            <% end %>
+          </ul>
+        </td>
+
+        <td><%= banco.created_at.strftime("%d/%m/%Y %H:%M:%S") %></td>
+
         <td>
           <a href="/bancos/<%= banco.id %>" class="btn btn-primary my-2">Ver</a>
           <a href="/bancos/<%= banco.id %>/edit" class="btn btn-warning my-2">Editar</a> 

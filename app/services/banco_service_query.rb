@@ -10,6 +10,9 @@ class BancoServiceQuery
         
         bancos = bancos.where("capital >= ?", params[:capital_ini]) if params[:capital_ini].present?
         bancos = bancos.where("capital <= ?", params[:capital_fim]) if params[:capital_fim].present?
+        
+        bancos = bancos.where("created_at >= ?", params[:data_ini]) if params[:data_ini].present?
+        bancos = bancos.where("created_at <= ?", params[:data_fim]) if params[:data_fim].present?
 
         if params[:ids].present?
 

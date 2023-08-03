@@ -5,6 +5,10 @@ ruby '2.7.2'
 
 gem 'bootstrap-generators'
 
+gem 'faker'
+
+gem 'will_paginate', '~> 3.1'
+
 gem 'httparty'
 
 gem 'record_tag_helper', '~> 1.0'
