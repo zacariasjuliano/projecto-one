@@ -111,7 +111,7 @@
         <th>Ni</th>
         <th>Capital</th>
         <th>Pais</th>
-        <th hidden>Capital</th>
+        <th>Deposito</th>
         <th>Criação</th>
         <th colspan="3" class="text-center">Acções</th>
       </tr>
@@ -127,11 +127,11 @@
         <td><%= banco.capital %></td>
         <td><%= banco.pais %></td>
         
-        <td hidden>
+        <td>
           <ul>
             <%= banco.deposito_bancos do |deposito| %>
               <li> 
-                Deposito: <%= deposito.valor %> 
+                Valor: <%= deposito.valor %> 
               </li>
             <% end %>
           </ul>
@@ -147,4 +147,18 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class="paginacao">
+    <% if params[:page].to_i > 1 %>  
+      <a class="btn btn-primary" href='<%= "/bancos?ids=#{params[:id]}&nome=#{params[:nome]}&sigla=#{params[:sigla]}&email=#{params[:email]}&ni=#{params[:ni]}&pais=#{params[:pais]}&capital_ini=#{params[:capital_ini]}&capital_fim=#{params[:capital_fim]}&data_ini=#{params[:data_ini]}&data_fim=#{params[:data_fim]}&page=#{params[:page].to_i - 1}" %>'> 
+        Anterior
+      </a>    
+    <% end %>
+
+    <a class="btn btn-primary" href='<%= "/bancos?ids=#{params[:id]}&nome=#{params[:nome]}&sigla=#{params[:sigla]}&email=#{params[:email]}&ni=#{params[:ni]}&pais=#{params[:pais]}&capital_ini=#{params[:capital_ini]}&capital_fim=#{params[:capital_fim]}&data_ini=#{params[:data_ini]}&data_fim=#{params[:data_fim]}&page=#{params[:page].to_i + 1}" %>'> 
+      Proximo
+    </a>
+  </div>
+
+
 </div>
