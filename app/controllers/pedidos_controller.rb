@@ -2,18 +2,41 @@ class PedidosController < ApplicationController
   before_action :set_pedido, only: %i[ show edit update destroy ]
 
   # GET /pedidos or /pedidos.json
-  def index
-    sql = "
-      select
-        clientes.nome, clientes.telefone, pedidos.id as pedido_id, pedidos.valor_total,
-        produtos.nome as produto_nome, produtos.valor as produto_valor
-      from pedidos
-      inner join clientes on clientes.id = pedidos.cliente_id
-      left join pedidos_produtos on pedidos_produtos.pedido_id = pedidos.id
-      left join produtos on produtos.id = pedidos_produtos.produto_id
-    "
+  def index   
+    # Pesquisa com a Model
 
-    @pedidos = ActiveRecord::Base.connection.execute(sql)
+       
+
+    @pedidos = Pedido.all
+
+    @pedidos = Pedido.joins("inner join clientes on clientes.id = pedidos.cliente_id")
+    .joins("left join pedidos_produtos on pedidos_produtos.pedido_id = pedidos.id")
+    .joins("left join produtos on produtos.id = pedidos_produtos.produto_id")
+    .select("pedidos.id as pedido_id, pedidos.valor_total as valor_total, clientes.nome as nome, clientes.telefone as telefone, produtos.nome as produto_nome, produtos.valor as produto_valor")
+    .order(id: :asc)
+    .paginate(page: params[:page], per_page: 4)
+
+
+    # @pedidos = Pedido.all
+    
+    
+    # Pesquisa com Query Bruta    
+    # sql = "
+    #   select
+    #     clientes.nome, clientes.telefone, pedidos.id as pedido_id, pedidos.valor_total,
+    #     produtos.nome as produto_nome, produtos.valor as produto_valor
+    #   from pedidos
+    #   inner join clientes on clientes.id = pedidos.cliente_id
+    #   left join pedidos_produtos on pedidos_produtos.pedido_id = pedidos.id
+    #   left join produtos on produtos.id = pedidos_produtos.produto_id
+    # "
+
+    #@pedidos = ActiveRecord::Base.connection.execute(sql) 
+
+    # @pedidos = Pedido.joins("inner join clientes on clientes.id = pedidos.cliente_id")
+    # @pedidos = @pedidos.joins("left join pedidos_produtos on pedidos_produtos.pedido_id = pedidos.id")
+    # @pedidos = @pedidos.joins("left join produtos on produtos.id = pedidos_produtos.produto_id")
+    # @pedidos = @pedidos.where("pedidos.nome ilike ?", "'%#{params[:nome]}%')
 
 
     # @pedidos = Pedido.all

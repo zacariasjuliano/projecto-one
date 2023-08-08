@@ -22,13 +22,15 @@ class BancoServiceQuery
 
         end
 
-        page = params[:page].to_i
-        page = 1 if page < 1
-        limit = 10
-        offset = limit * (page - 1)
+        #page = params[:page].to_i
+        #page = 1 if page < 1
+        #limit = 10
+        #offset = limit * (page - 1)
+        #bancos = bancos.limit(limit).offset(offset)
+        #bancos = bancos.order(id: :asc)
 
-        bancos = bancos.limit(limit).offset(offset)
-        bancos = bancos.order(id: :asc)
+        # Will Paginate
+        bancos = bancos.paginate(page: params[:page], per_page: 10)
 
         bancos
     end

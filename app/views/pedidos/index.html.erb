@@ -1,9 +1,9 @@
 <div class="page-header">
   <%= link_to new_pedido_path, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Pedido
+    Novo Pedido
   <% end %>
-  <h1>Listing pedidos</h1>
+  <h1>Listagem de pedidos</h1>
 </div>
 
 <div class="table-responsive">
@@ -30,13 +30,18 @@
           <td><%= pedido["valor_total"] %></td>
           <td><%= pedido["produto_nome"] %></td>
           <td><%= pedido["produto_valor"] %></td>
-          <td><%= link_to 'Show', pedido_path(pedido["pedido_id"]) %></td>
-          <td><%= link_to 'Edit', edit_pedido_path(pedido["pedido_id"]) %></td>
-          <td><%= link_to 'Destroy', pedido_path(pedido["pedido_id"]) %></td>
+          <td><%= link_to 'Ver', pedido_path(pedido["pedido_id"]) %></td>
+          <td><%= link_to 'Editar', edit_pedido_path(pedido["pedido_id"]) %></td>
+          <td><%= link_to 'Apagar', pedido_path(pedido["pedido_id"]) %></td>
         </tr>
       <% end %>
     </tbody>
 
   </table>
+
+  <div class="paginacao">
+    <%= will_paginate @pedidos %>  
+  </div>
+
 </div>
 

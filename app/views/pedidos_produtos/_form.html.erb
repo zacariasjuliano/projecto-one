@@ -15,7 +15,7 @@
   <div class="form-group">
     <%= f.label :pedido, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.collection_select :pedido_id, Pedido.all, :id, :cliente_id, { prompt: "Select an option" }, class: "form-control" %>
+      <%= f.collection_select :pedido_id, Pedido.joins("inner join clientes on clientes.id = pedidos.cliente_id").select("pedidos.id as id, pedidos.valor_total as valor_total, clientes.nome as nome, clientes.telefone as telefone"), :id, :nome, { prompt: "Select an option" }, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">

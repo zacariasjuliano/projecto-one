@@ -1,20 +1,20 @@
 <div class="page-header">
   <%= link_to pedidos_produtos_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    Voltar
   <% end %>
   <%= link_to edit_pedidos_produto_path(@pedidos_produto), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
-    Edit
+    Editar
   <% end %>
-  <h1>Show pedidos_produto</h1>
+  <h1>Ver pedido de produto</h1>
 </div>
 
 <dl class="dl-horizontal">
   <dt>Pedido:</dt>
-  <dd><%= @pedidos_produto.pedido %></dd>
+  <dd><%= @pedidos_produto.pedido.cliente.nome %></dd>
 
   <dt>Produto:</dt>
-  <dd><%= @pedidos_produto.produto %></dd>
+  <dd><%= @pedidos_produto.produto.nome %></dd>
 
 </dl>

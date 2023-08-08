@@ -131,7 +131,7 @@
           <ul>
             <% banco.deposito_bancos.each do |deposito| %>
               <li> 
-                Valor: <%= deposito.valor %> 
+                Valor: <%= deposito.valor %> Akz
               </li>
             <% end %>
           </ul>
@@ -149,6 +149,10 @@
   </table>
 
   <div class="paginacao">
+
+  
+    <%= will_paginate @pedidos %> 
+    <!---
     <% if params[:page].to_i > 1 %>  
       <a class="btn btn-primary" href='<%= "/bancos?ids=#{params[:id]}&nome=#{params[:nome]}&sigla=#{params[:sigla]}&email=#{params[:email]}&ni=#{params[:ni]}&pais=#{params[:pais]}&capital_ini=#{params[:capital_ini]}&capital_fim=#{params[:capital_fim]}&data_ini=#{params[:data_ini]}&data_fim=#{params[:data_fim]}&page=#{params[:page].to_i - 1}" %>'> 
         Anterior
@@ -158,6 +162,8 @@
     <a class="btn btn-primary" href='<%= "/bancos?ids=#{params[:id]}&nome=#{params[:nome]}&sigla=#{params[:sigla]}&email=#{params[:email]}&ni=#{params[:ni]}&pais=#{params[:pais]}&capital_ini=#{params[:capital_ini]}&capital_fim=#{params[:capital_fim]}&data_ini=#{params[:data_ini]}&data_fim=#{params[:data_fim]}&page=#{params[:page].to_i + 1}" %>'> 
       Proximo
     </a>
+    --->
+
   </div>
 
 
