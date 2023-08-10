@@ -26,4 +26,20 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class="paginacao">
+    
+    <% if params[:page].to_i > 1 %>  
+      <a class="btn btn-primary" href='<%= "/pedidos_produtos?page=#{params[:page].to_i - 1}" %>'> 
+        Anterior
+      </a>    
+    <% end %>
+
+    <% if params[:page].to_i <= @toatl_page %> 
+      <a class="btn btn-primary" href='<%= "/pedidos_produtos?page=#{params[:page].to_i + 1}" %>'> 
+        Proximo
+      </a>    
+    <% end %>
+
+  </div>
 </div>

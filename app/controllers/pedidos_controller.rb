@@ -3,21 +3,16 @@ class PedidosController < ApplicationController
 
   # GET /pedidos or /pedidos.json
   def index   
-    # Pesquisa com a Model
-
-       
-
+    
     @pedidos = Pedido.all
 
+    # Pesquisa com a Model
     @pedidos = Pedido.joins("inner join clientes on clientes.id = pedidos.cliente_id")
     .joins("left join pedidos_produtos on pedidos_produtos.pedido_id = pedidos.id")
     .joins("left join produtos on produtos.id = pedidos_produtos.produto_id")
     .select("pedidos.id as pedido_id, pedidos.valor_total as valor_total, clientes.nome as nome, clientes.telefone as telefone, produtos.nome as produto_nome, produtos.valor as produto_valor")
     .order(id: :asc)
     .paginate(page: params[:page], per_page: 4)
-
-
-    # @pedidos = Pedido.all
     
     
     # Pesquisa com Query Bruta    
@@ -37,9 +32,7 @@ class PedidosController < ApplicationController
     # @pedidos = @pedidos.joins("left join pedidos_produtos on pedidos_produtos.pedido_id = pedidos.id")
     # @pedidos = @pedidos.joins("left join produtos on produtos.id = pedidos_produtos.produto_id")
     # @pedidos = @pedidos.where("pedidos.nome ilike ?", "'%#{params[:nome]}%')
-
-
-    # @pedidos = Pedido.all
+  
   end
 
   # GET /pedidos/1 or /pedidos/1.json

@@ -3,7 +3,21 @@ class PedidosProdutosController < ApplicationController
 
   # GET /pedidos_produtos or /pedidos_produtos.json
   def index
-    @pedidos_produtos = PedidosProduto.all
+    @pedidos_produtos = PedidosProduto.all    
+
+    page = params[:page].to_i
+    page = 1 if page < 1
+    limit = 5
+    offset = limit * (page - 1)
+
+    #Retorna o total de paginas por registro
+    @toatl_page = @pedidos_produtos.count / limit
+
+    @pedidos_produtos = @pedidos_produtos.limit(limit).offset(offset)
+    @pedidos_produtos = @pedidos_produtos.order(id: :asc)
+
+    return render "index"    
+
   end
 
   # GET /pedidos_produtos/1 or /pedidos_produtos/1.json

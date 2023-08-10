@@ -10,8 +10,10 @@ class GithubServiceAPI
             }
             
             #Pesquisa pelo Repositório
-            url = "https://api.github.com/users/"+params[:nome]+"/repos"
+            url = "https://api.github.com/users/zacariasjuliano/repos"
             response = HTTParty.get(url, headers: headers)
+
+            print response.code
 
             if response.code == 200
                 repositories = JSON.parse(response.body) 
