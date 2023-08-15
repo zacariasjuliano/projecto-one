@@ -29,4 +29,16 @@
   <dt>Pais:</dt>
   <dd><%= @banco.pais %></dd>
 
+  <dt>Depositos:</dt><br>
+  <dd>
+    <ul>
+      <% @banco.deposito_bancos.each do |deposito| %>
+        <li> 
+          <b>Valor: <%= deposito.valor %> Akz<br>
+          <b>Obs: <%= deposito.obs %> Akz<br>
+          <hr>
+        </li>
+      <% end %>
+    </ul>
+  <dd>
 </dl>

@@ -53,4 +53,66 @@
       <%= f.submit class: "btn btn-primary" %>
     </div>
   </div>
+
+  <div style="text-align:right">
+    <button type="button" onclick="AdicionarDeposito()">Adicionar Deposito</button>
+    <hr>
+
+    <div id="campos-depositos">
+    </div>
+
+    <div id="modelo-campos-depositos" style="display:none">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="banco_deposito">Valor</label>
+        <div class="col-sm-10">
+          <input class="form-control" type="text" name="banco_deposito[depositos][][valor]" id="banco_deposito_valor">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="banco_deposito">Obs</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" name="banco_deposito[depositos][][obs]" id="banco_deposito_obs"></textarea>
+        </div>
+      </div>
+    
+      <button type="button" class="btn btn-danger" onclick="excluirCamposCliente(this)">Excluir</button>
+
+      <hr>
+    </div>
+  </div>
+
+
 <% end %>
+
+<script>
+  const AdicionarDeposito = ()=> {
+    let html = document.querySelector("#modelo-campos-depositos").innerHTML;
+    const dv = document.createElement("div");
+    dv.innerHTML = html
+    document.querySelector("#campos-depositos").innerHTML += html
+  }
+
+  const excluirCamposCliente = (button) => {
+    let preenchido = false
+    const dv = button.parentNode.parentNode;
+    const valor = dv.querySelector('#banco_deposito_valor')
+    const obs = dv.querySelector('#banco_deposito_obs')
+
+    if ((valor && valor.value != "") || (obs && obs.valuue != ""))
+      preenchido = true
+
+    if (preenchido) {
+      if (confirm("Confirma exclusão ? os dados digitados serão perdidos."))
+        dv.remove();
+        return;
+    }
+
+    dv.remove();
+  }
+
+</script>
+
+
+
+

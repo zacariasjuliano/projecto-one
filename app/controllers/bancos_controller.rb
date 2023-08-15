@@ -34,7 +34,10 @@ class BancosController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @banco.errors, status: :unprocessable_entity }
       end
-    end
+    end    
+
+    save_banco_deposito(@banco)
+
   end
 
   # PATCH/PUT /bancos/1 or /bancos/1.json
@@ -61,6 +64,24 @@ class BancosController < ApplicationController
   end
 
   private
+    def save_banco_deposito(banco)
+
+      print params
+      debugger
+
+      if (params["banco_deposito"].present? && params["banco_deposito"]["depositos"].present?)
+        DepositoBanco.where(banco_id: banco.id).destroy_all
+        
+        params["banco_deposito"]["depositos"].each do |item|
+          DepositoBanco.create(
+            banco_id: banco.id,
+            valor: item["valor"],
+            obs: item["obs"]
+          ) if item["valor"].present?
+        end
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_banco
       @banco = Banco.find(params[:id])
