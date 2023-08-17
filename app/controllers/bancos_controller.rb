@@ -28,15 +28,15 @@ class BancosController < ApplicationController
 
     respond_to do |format|
       if @banco.save
+        save_banco_deposito(@banco)
+
         format.html { redirect_to banco_url(@banco), notice: "Banco was successfully created." }
         format.json { render :show, status: :created, location: @banco }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @banco.errors, status: :unprocessable_entity }
       end
-    end    
-
-    save_banco_deposito(@banco)
+    end 
 
   end
 
@@ -44,6 +44,8 @@ class BancosController < ApplicationController
   def update
     respond_to do |format|
       if @banco.update(banco_params)
+        save_banco_deposito(@banco)
+        
         format.html { redirect_to banco_url(@banco), notice: "Banco was successfully updated." }
         format.json { render :show, status: :ok, location: @banco }
       else
@@ -65,13 +67,13 @@ class BancosController < ApplicationController
 
   private
     def save_banco_deposito(banco)
-
-      print params
-      debugger
+      #print params
+      #debugger
 
       if (params["banco_deposito"].present? && params["banco_deposito"]["depositos"].present?)
         DepositoBanco.where(banco_id: banco.id).destroy_all
         
+        # Salva cada deposito do banco
         params["banco_deposito"]["depositos"].each do |item|
           DepositoBanco.create(
             banco_id: banco.id,
